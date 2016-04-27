@@ -1,0 +1,18 @@
+{
+	"name": "bsrt",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Blender Sequence Render Tool",
+	"main": "app.js",
+	"dependencies": {
+		"zmq": "= 2.14.0"
+	},
+	"scripts": {
+	},
+	"keywords": [
+		"blender",
+		"render"
+	],
+	"author": "Paul Hamilton <phamtec@mac.com>",
+	"license": "Closed"
+}
