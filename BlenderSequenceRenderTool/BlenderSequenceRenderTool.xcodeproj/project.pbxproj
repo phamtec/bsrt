@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */; };
+		DAFBECBC1CD0E43B000EBF62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */; };
+		DAFBECBE1CD0E43B000EBF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFBECBD1CD0E43B000EBF62 /* Assets.xcassets */; };
+		DAFBECC11CD0E43B000EBF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFBECBF1CD0E43B000EBF62 /* Main.storyboard */; };
+		DAFBECCC1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECCB1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.swift */; };
+		DAFBECD71CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECD61CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.swift */; };
+		DAFBECE51CD0E700000EBF62 /* BE.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECE41CD0E700000EBF62 /* BE.swift */; };
+		DAFBECE71CD0E71C000EBF62 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECE61CD0E71C000EBF62 /* Backend.swift */; };
+		DAFBECE91CD0E73A000EBF62 /* ProdBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECE81CD0E73A000EBF62 /* ProdBackend.swift */; };
+		DAFBECEB1CD0E772000EBF62 /* GenericBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECEA1CD0E772000EBF62 /* GenericBackend.swift */; };
+		DAFBECED1CD0E800000EBF62 /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECEC1CD0E800000EBF62 /* AlertUtils.swift */; };
+		DAFBECEF1CD0E9F4000EBF62 /* LocalBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECEE1CD0E9F4000EBF62 /* LocalBackend.swift */; };
+		DAFBECF21CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECF01CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld */; };
+		DAFBED311CD0F15D000EBF62 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED2D1CD0F15D000EBF62 /* Project+CoreDataProperties.swift */; };
+		DAFBED321CD0F15D000EBF62 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED2E1CD0F15D000EBF62 /* Project.swift */; };
+		DAFBED331CD0F15D000EBF62 /* Folder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED2F1CD0F15D000EBF62 /* Folder+CoreDataProperties.swift */; };
+		DAFBED341CD0F15D000EBF62 /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED301CD0F15D000EBF62 /* Folder.swift */; };
+		DAFBED461CD1D10E000EBF62 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED361CD1D10E000EBF62 /* SocketAckEmitter.swift */; };
+		DAFBED471CD1D10E000EBF62 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED371CD1D10E000EBF62 /* SocketAckManager.swift */; };
+		DAFBED481CD1D10E000EBF62 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED381CD1D10E000EBF62 /* SocketAnyEvent.swift */; };
+		DAFBED491CD1D10E000EBF62 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED391CD1D10E000EBF62 /* SocketEngine.swift */; };
+		DAFBED4A1CD1D10E000EBF62 /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3A1CD1D10E000EBF62 /* SocketEngineClient.swift */; };
+		DAFBED4B1CD1D10E000EBF62 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3B1CD1D10E000EBF62 /* SocketEventHandler.swift */; };
+		DAFBED4C1CD1D10E000EBF62 /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3C1CD1D10E000EBF62 /* SocketFixUTF8.swift */; };
+		DAFBED4D1CD1D10E000EBF62 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3D1CD1D10E000EBF62 /* SocketIOClient.swift */; };
+		DAFBED4E1CD1D10E000EBF62 /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3E1CD1D10E000EBF62 /* SocketIOClientStatus.swift */; };
+		DAFBED4F1CD1D10E000EBF62 /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED3F1CD1D10E000EBF62 /* SocketLogger.swift */; };
+		DAFBED501CD1D10E000EBF62 /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED401CD1D10E000EBF62 /* SocketPacket.swift */; };
+		DAFBED511CD1D10E000EBF62 /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED411CD1D10E000EBF62 /* SocketParser.swift */; };
+		DAFBED521CD1D10E000EBF62 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED421CD1D10E000EBF62 /* SocketStringReader.swift */; };
+		DAFBED531CD1D10E000EBF62 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED431CD1D10E000EBF62 /* SocketTypes.swift */; };
+		DAFBED541CD1D10E000EBF62 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED441CD1D10E000EBF62 /* SwiftRegex.swift */; };
+		DAFBED551CD1D10E000EBF62 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBED451CD1D10E000EBF62 /* WebSocket.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DAFBECC81CD0E43B000EBF62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAFBECAE1CD0E43B000EBF62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAFBECB51CD0E43B000EBF62;
+			remoteInfo = BlenderSequenceRenderTool;
+		};
+		DAFBECD31CD0E43B000EBF62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAFBECAE1CD0E43B000EBF62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAFBECB51CD0E43B000EBF62;
+			remoteInfo = BlenderSequenceRenderTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DAFBECB61CD0E43B000EBF62 /* BlenderSequenceRenderTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlenderSequenceRenderTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DAFBECBD1CD0E43B000EBF62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAFBECC01CD0E43B000EBF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DAFBECC21CD0E43B000EBF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAFBECC71CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlenderSequenceRenderToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFBECCB1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlenderSequenceRenderToolTests.swift; sourceTree = "<group>"; };
+		DAFBECCD1CD0E43B000EBF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAFBECD21CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlenderSequenceRenderToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFBECD61CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlenderSequenceRenderToolUITests.swift; sourceTree = "<group>"; };
+		DAFBECD81CD0E43B000EBF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAFBECE41CD0E700000EBF62 /* BE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BE.swift; sourceTree = "<group>"; };
+		DAFBECE61CD0E71C000EBF62 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		DAFBECE81CD0E73A000EBF62 /* ProdBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdBackend.swift; sourceTree = "<group>"; };
+		DAFBECEA1CD0E772000EBF62 /* GenericBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericBackend.swift; sourceTree = "<group>"; };
+		DAFBECEC1CD0E800000EBF62 /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
+		DAFBECEE1CD0E9F4000EBF62 /* LocalBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalBackend.swift; sourceTree = "<group>"; };
+		DAFBECF11CD0EBC0000EBF62 /* BSRTModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BSRTModel.xcdatamodel; sourceTree = "<group>"; };
+		DAFBED2D1CD0F15D000EBF62 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DAFBED2E1CD0F15D000EBF62 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		DAFBED2F1CD0F15D000EBF62 /* Folder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Folder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DAFBED301CD0F15D000EBF62 /* Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		DAFBED361CD1D10E000EBF62 /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
+		DAFBED371CD1D10E000EBF62 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
+		DAFBED381CD1D10E000EBF62 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
+		DAFBED391CD1D10E000EBF62 /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
+		DAFBED3A1CD1D10E000EBF62 /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngineClient.swift; sourceTree = "<group>"; };
+		DAFBED3B1CD1D10E000EBF62 /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEventHandler.swift; sourceTree = "<group>"; };
+		DAFBED3C1CD1D10E000EBF62 /* SocketFixUTF8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketFixUTF8.swift; sourceTree = "<group>"; };
+		DAFBED3D1CD1D10E000EBF62 /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClient.swift; sourceTree = "<group>"; };
+		DAFBED3E1CD1D10E000EBF62 /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOClientStatus.swift; sourceTree = "<group>"; };
+		DAFBED3F1CD1D10E000EBF62 /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketLogger.swift; sourceTree = "<group>"; };
+		DAFBED401CD1D10E000EBF62 /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketPacket.swift; sourceTree = "<group>"; };
+		DAFBED411CD1D10E000EBF62 /* SocketParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketParser.swift; sourceTree = "<group>"; };
+		DAFBED421CD1D10E000EBF62 /* SocketStringReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketStringReader.swift; sourceTree = "<group>"; };
+		DAFBED431CD1D10E000EBF62 /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
+		DAFBED441CD1D10E000EBF62 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
+		DAFBED451CD1D10E000EBF62 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAFBECB31CD0E43B000EBF62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECC41CD0E43B000EBF62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECCF1CD0E43B000EBF62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAFBECAD1CD0E43B000EBF62 = {
+			isa = PBXGroup;
+			children = (
+				DAFBECB81CD0E43B000EBF62 /* BlenderSequenceRenderTool */,
+				DAFBECCA1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests */,
+				DAFBECD51CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests */,
+				DAFBECB71CD0E43B000EBF62 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAFBECB71CD0E43B000EBF62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBECB61CD0E43B000EBF62 /* BlenderSequenceRenderTool.app */,
+				DAFBECC71CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.xctest */,
+				DAFBECD21CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAFBECB81CD0E43B000EBF62 /* BlenderSequenceRenderTool */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBED351CD1D10E000EBF62 /* SocketIOClientSwift */,
+				DAFBED2D1CD0F15D000EBF62 /* Project+CoreDataProperties.swift */,
+				DAFBED2E1CD0F15D000EBF62 /* Project.swift */,
+				DAFBED2F1CD0F15D000EBF62 /* Folder+CoreDataProperties.swift */,
+				DAFBED301CD0F15D000EBF62 /* Folder.swift */,
+				DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */,
+				DAFBECF01CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld */,
+				DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */,
+				DAFBECBD1CD0E43B000EBF62 /* Assets.xcassets */,
+				DAFBECBF1CD0E43B000EBF62 /* Main.storyboard */,
+				DAFBECC21CD0E43B000EBF62 /* Info.plist */,
+				DAFBECE41CD0E700000EBF62 /* BE.swift */,
+				DAFBECE61CD0E71C000EBF62 /* Backend.swift */,
+				DAFBECE81CD0E73A000EBF62 /* ProdBackend.swift */,
+				DAFBECEA1CD0E772000EBF62 /* GenericBackend.swift */,
+				DAFBECEC1CD0E800000EBF62 /* AlertUtils.swift */,
+				DAFBECEE1CD0E9F4000EBF62 /* LocalBackend.swift */,
+			);
+			path = BlenderSequenceRenderTool;
+			sourceTree = "<group>";
+		};
+		DAFBECCA1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBECCB1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.swift */,
+				DAFBECCD1CD0E43B000EBF62 /* Info.plist */,
+			);
+			path = BlenderSequenceRenderToolTests;
+			sourceTree = "<group>";
+		};
+		DAFBECD51CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBECD61CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.swift */,
+				DAFBECD81CD0E43B000EBF62 /* Info.plist */,
+			);
+			path = BlenderSequenceRenderToolUITests;
+			sourceTree = "<group>";
+		};
+		DAFBED351CD1D10E000EBF62 /* SocketIOClientSwift */ = {
+			isa = PBXGroup;
+			children = (
+				DAFBED361CD1D10E000EBF62 /* SocketAckEmitter.swift */,
+				DAFBED371CD1D10E000EBF62 /* SocketAckManager.swift */,
+				DAFBED381CD1D10E000EBF62 /* SocketAnyEvent.swift */,
+				DAFBED391CD1D10E000EBF62 /* SocketEngine.swift */,
+				DAFBED3A1CD1D10E000EBF62 /* SocketEngineClient.swift */,
+				DAFBED3B1CD1D10E000EBF62 /* SocketEventHandler.swift */,
+				DAFBED3C1CD1D10E000EBF62 /* SocketFixUTF8.swift */,
+				DAFBED3D1CD1D10E000EBF62 /* SocketIOClient.swift */,
+				DAFBED3E1CD1D10E000EBF62 /* SocketIOClientStatus.swift */,
+				DAFBED3F1CD1D10E000EBF62 /* SocketLogger.swift */,
+				DAFBED401CD1D10E000EBF62 /* SocketPacket.swift */,
+				DAFBED411CD1D10E000EBF62 /* SocketParser.swift */,
+				DAFBED421CD1D10E000EBF62 /* SocketStringReader.swift */,
+				DAFBED431CD1D10E000EBF62 /* SocketTypes.swift */,
+				DAFBED441CD1D10E000EBF62 /* SwiftRegex.swift */,
+				DAFBED451CD1D10E000EBF62 /* WebSocket.swift */,
+			);
+			path = SocketIOClientSwift;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAFBECB51CD0E43B000EBF62 /* BlenderSequenceRenderTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAFBECDB1CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderTool" */;
+			buildPhases = (
+				DAFBECB21CD0E43B000EBF62 /* Sources */,
+				DAFBECB31CD0E43B000EBF62 /* Frameworks */,
+				DAFBECB41CD0E43B000EBF62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlenderSequenceRenderTool;
+			productName = BlenderSequenceRenderTool;
+			productReference = DAFBECB61CD0E43B000EBF62 /* BlenderSequenceRenderTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DAFBECC61CD0E43B000EBF62 /* BlenderSequenceRenderToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAFBECDE1CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolTests" */;
+			buildPhases = (
+				DAFBECC31CD0E43B000EBF62 /* Sources */,
+				DAFBECC41CD0E43B000EBF62 /* Frameworks */,
+				DAFBECC51CD0E43B000EBF62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAFBECC91CD0E43B000EBF62 /* PBXTargetDependency */,
+			);
+			name = BlenderSequenceRenderToolTests;
+			productName = BlenderSequenceRenderToolTests;
+			productReference = DAFBECC71CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DAFBECD11CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAFBECE11CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolUITests" */;
+			buildPhases = (
+				DAFBECCE1CD0E43B000EBF62 /* Sources */,
+				DAFBECCF1CD0E43B000EBF62 /* Frameworks */,
+				DAFBECD01CD0E43B000EBF62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAFBECD41CD0E43B000EBF62 /* PBXTargetDependency */,
+			);
+			name = BlenderSequenceRenderToolUITests;
+			productName = BlenderSequenceRenderToolUITests;
+			productReference = DAFBECD21CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAFBECAE1CD0E43B000EBF62 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Paul Hamilton";
+				TargetAttributes = {
+					DAFBECB51CD0E43B000EBF62 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					DAFBECC61CD0E43B000EBF62 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = DAFBECB51CD0E43B000EBF62;
+					};
+					DAFBECD11CD0E43B000EBF62 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = DAFBECB51CD0E43B000EBF62;
+					};
+				};
+			};
+			buildConfigurationList = DAFBECB11CD0E43B000EBF62 /* Build configuration list for PBXProject "BlenderSequenceRenderTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DAFBECAD1CD0E43B000EBF62;
+			productRefGroup = DAFBECB71CD0E43B000EBF62 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAFBECB51CD0E43B000EBF62 /* BlenderSequenceRenderTool */,
+				DAFBECC61CD0E43B000EBF62 /* BlenderSequenceRenderToolTests */,
+				DAFBECD11CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAFBECB41CD0E43B000EBF62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFBECBE1CD0E43B000EBF62 /* Assets.xcassets in Resources */,
+				DAFBECC11CD0E43B000EBF62 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECC51CD0E43B000EBF62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECD01CD0E43B000EBF62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAFBECB21CD0E43B000EBF62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFBECF21CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld in Sources */,
+				DAFBED4C1CD1D10E000EBF62 /* SocketFixUTF8.swift in Sources */,
+				DAFBED331CD0F15D000EBF62 /* Folder+CoreDataProperties.swift in Sources */,
+				DAFBED541CD1D10E000EBF62 /* SwiftRegex.swift in Sources */,
+				DAFBED481CD1D10E000EBF62 /* SocketAnyEvent.swift in Sources */,
+				DAFBECEF1CD0E9F4000EBF62 /* LocalBackend.swift in Sources */,
+				DAFBED311CD0F15D000EBF62 /* Project+CoreDataProperties.swift in Sources */,
+				DAFBECE71CD0E71C000EBF62 /* Backend.swift in Sources */,
+				DAFBED341CD0F15D000EBF62 /* Folder.swift in Sources */,
+				DAFBED4B1CD1D10E000EBF62 /* SocketEventHandler.swift in Sources */,
+				DAFBED491CD1D10E000EBF62 /* SocketEngine.swift in Sources */,
+				DAFBED471CD1D10E000EBF62 /* SocketAckManager.swift in Sources */,
+				DAFBECE91CD0E73A000EBF62 /* ProdBackend.swift in Sources */,
+				DAFBED521CD1D10E000EBF62 /* SocketStringReader.swift in Sources */,
+				DAFBECBC1CD0E43B000EBF62 /* ViewController.swift in Sources */,
+				DAFBED551CD1D10E000EBF62 /* WebSocket.swift in Sources */,
+				DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */,
+				DAFBED321CD0F15D000EBF62 /* Project.swift in Sources */,
+				DAFBED4E1CD1D10E000EBF62 /* SocketIOClientStatus.swift in Sources */,
+				DAFBED4A1CD1D10E000EBF62 /* SocketEngineClient.swift in Sources */,
+				DAFBED4F1CD1D10E000EBF62 /* SocketLogger.swift in Sources */,
+				DAFBED531CD1D10E000EBF62 /* SocketTypes.swift in Sources */,
+				DAFBECED1CD0E800000EBF62 /* AlertUtils.swift in Sources */,
+				DAFBED461CD1D10E000EBF62 /* SocketAckEmitter.swift in Sources */,
+				DAFBED4D1CD1D10E000EBF62 /* SocketIOClient.swift in Sources */,
+				DAFBED511CD1D10E000EBF62 /* SocketParser.swift in Sources */,
+				DAFBECEB1CD0E772000EBF62 /* GenericBackend.swift in Sources */,
+				DAFBED501CD1D10E000EBF62 /* SocketPacket.swift in Sources */,
+				DAFBECE51CD0E700000EBF62 /* BE.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECC31CD0E43B000EBF62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFBECCC1CD0E43B000EBF62 /* BlenderSequenceRenderToolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAFBECCE1CD0E43B000EBF62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFBECD71CD0E43B000EBF62 /* BlenderSequenceRenderToolUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAFBECC91CD0E43B000EBF62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAFBECB51CD0E43B000EBF62 /* BlenderSequenceRenderTool */;
+			targetProxy = DAFBECC81CD0E43B000EBF62 /* PBXContainerItemProxy */;
+		};
+		DAFBECD41CD0E43B000EBF62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAFBECB51CD0E43B000EBF62 /* BlenderSequenceRenderTool */;
+			targetProxy = DAFBECD31CD0E43B000EBF62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DAFBECBF1CD0E43B000EBF62 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAFBECC01CD0E43B000EBF62 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAFBECD91CD0E43B000EBF62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DAFBECDA1CD0E43B000EBF62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DAFBECDC1CD0E43B000EBF62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderTool";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DAFBECDD1CD0E43B000EBF62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderTool";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DAFBECDF1CD0E43B000EBF62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderToolTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlenderSequenceRenderTool.app/Contents/MacOS/BlenderSequenceRenderTool";
+			};
+			name = Debug;
+		};
+		DAFBECE01CD0E43B000EBF62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderToolTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlenderSequenceRenderTool.app/Contents/MacOS/BlenderSequenceRenderTool";
+			};
+			name = Release;
+		};
+		DAFBECE21CD0E43B000EBF62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderToolUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BlenderSequenceRenderTool;
+			};
+			name = Debug;
+		};
+		DAFBECE31CD0E43B000EBF62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = BlenderSequenceRenderToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Visual-OPS.BlenderSequenceRenderToolUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BlenderSequenceRenderTool;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAFBECB11CD0E43B000EBF62 /* Build configuration list for PBXProject "BlenderSequenceRenderTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFBECD91CD0E43B000EBF62 /* Debug */,
+				DAFBECDA1CD0E43B000EBF62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAFBECDB1CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFBECDC1CD0E43B000EBF62 /* Debug */,
+				DAFBECDD1CD0E43B000EBF62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DAFBECDE1CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFBECDF1CD0E43B000EBF62 /* Debug */,
+				DAFBECE01CD0E43B000EBF62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DAFBECE11CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFBECE21CD0E43B000EBF62 /* Debug */,
+				DAFBECE31CD0E43B000EBF62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DAFBECF01CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DAFBECF11CD0EBC0000EBF62 /* BSRTModel.xcdatamodel */,
+			);
+			currentVersion = DAFBECF11CD0EBC0000EBF62 /* BSRTModel.xcdatamodel */;
+			path = BSRTModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DAFBECAE1CD0E43B000EBF62 /* Project object */;
+}
