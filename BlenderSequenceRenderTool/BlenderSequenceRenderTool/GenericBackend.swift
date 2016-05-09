@@ -173,6 +173,95 @@ class GenericBackend: Backend {
         task.resume()
     }
     
+    func downloadMedia(rest: String, query: String, filename: String, errorHandler: (String) -> Void, callback: () -> Void ) -> Void {
+        
+        let request = getRequest(rest, query: query)
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request) {data, response, error -> Void in
+            
+            if (response == nil) {
+                if (error != nil) {
+                    errorHandler(error!.localizedDescription)
+                }
+                else {
+                    errorHandler("no reponse from server, and no error.")
+                }
+                errorHandler("Could not log onto remote server.")
+            }
+            else {
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    if (httpResponse.statusCode == 200) {
+                        
+                        data?.writeToFile(filename, atomically: true)
+                        callback()
+                        
+                    }
+                    else if (httpResponse.statusCode == 401) {
+                        errorHandler("Security error.")
+                    }
+                    else {
+                        errorHandler("unexpected HTTP response \(httpResponse.statusCode)")
+                    }
+                } else {
+                    errorHandler("unexpected response")
+                }
+            }
+            
+        }
+        
+        task.resume()
+    }
+    
+    func uploadMedia(rest: String, query: String, name: String, mime: String, data: NSData, errorHandler: (String) -> Void, callback: (NSDictionary) -> Void) -> Void {
+        
+        let request = getRequest(rest, query: query)
+        let session = NSURLSession.sharedSession()
+        
+        request.HTTPMethod = "POST"
+        
+        let rawBoundary = "CocoaFormBoundarydYU9vLDzGPmHAAD5"
+        let boundary = "--\(rawBoundary)"
+        let endBoundary = "\(boundary)--"
+        
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        let body:NSMutableString = NSMutableString();
+        body.appendString("\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"name\"\r\n\r\n")
+        body.appendString("\(name)\r\n")
+        
+        body.appendString("\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"mime\"\r\n\r\n")
+        body.appendString("\(mime)\r\n")
+        
+        body.appendString("\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"img.jpg\"\r\n")
+        body.appendString("Content-Type: application/octet-stream\r\n\r\n")
+        
+        let end:String = "\r\n\(endBoundary)"
+        
+        let requestData:NSMutableData = NSMutableData();
+        requestData.appendData(body.dataUsingEncoding(NSUTF8StringEncoding)!)
+        requestData.appendData(data)
+        requestData.appendData(end.dataUsingEncoding(NSUTF8StringEncoding)!)
+        
+        let content = "multipart/form-data; boundary=\(rawBoundary)"
+        request.setValue(content, forHTTPHeaderField: "Content-Type")
+        request.setValue("\(requestData.length)", forHTTPHeaderField: "Content-Length")
+        
+        request.HTTPBody = requestData
+        
+        let task = session.dataTaskWithRequest(request) {data, response, error -> Void in
+            
+            GenericBackend.handleSingleResponse(data, response: response, error: error, errorHandler: errorHandler) { data -> Void in
+                callback(data)
+            }
+            
+        }
+        task.resume()
+        
+    }
     private class func handleResponse(response: NSURLResponse!, error: NSError!, errorHandler: (String) -> Void, callback: () -> Void ) {
         
         if (response == nil) {

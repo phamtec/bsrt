@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA5854521CE060BD00CD12E3 /* SceneFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5854511CE060BD00CD12E3 /* SceneFolder.swift */; };
+		DA5854541CE0621B00CD12E3 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5854531CE0621B00CD12E3 /* Messages.swift */; };
 		DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */; };
 		DAFBECBC1CD0E43B000EBF62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */; };
 		DAFBECBE1CD0E43B000EBF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFBECBD1CD0E43B000EBF62 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA5854511CE060BD00CD12E3 /* SceneFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneFolder.swift; sourceTree = "<group>"; };
+		DA5854531CE0621B00CD12E3 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		DAFBECB61CD0E43B000EBF62 /* BlenderSequenceRenderTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlenderSequenceRenderTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				DAFBECEA1CD0E772000EBF62 /* GenericBackend.swift */,
 				DAFBECEC1CD0E800000EBF62 /* AlertUtils.swift */,
 				DAFBECEE1CD0E9F4000EBF62 /* LocalBackend.swift */,
+				DA5854511CE060BD00CD12E3 /* SceneFolder.swift */,
+				DA5854531CE0621B00CD12E3 /* Messages.swift */,
 			);
 			path = BlenderSequenceRenderTool;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFBECF21CD0EBC0000EBF62 /* BSRTModel.xcdatamodeld in Sources */,
+				DA5854541CE0621B00CD12E3 /* Messages.swift in Sources */,
 				DAFBED4C1CD1D10E000EBF62 /* SocketFixUTF8.swift in Sources */,
 				DAFBED331CD0F15D000EBF62 /* Folder+CoreDataProperties.swift in Sources */,
 				DAFBED541CD1D10E000EBF62 /* SwiftRegex.swift in Sources */,
@@ -359,6 +366,7 @@
 				DAFBED551CD1D10E000EBF62 /* WebSocket.swift in Sources */,
 				DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */,
 				DAFBED321CD0F15D000EBF62 /* Project.swift in Sources */,
+				DA5854521CE060BD00CD12E3 /* SceneFolder.swift in Sources */,
 				DAFBED4E1CD1D10E000EBF62 /* SocketIOClientStatus.swift in Sources */,
 				DAFBED4A1CD1D10E000EBF62 /* SocketEngineClient.swift in Sources */,
 				DAFBED4F1CD1D10E000EBF62 /* SocketLogger.swift in Sources */,
@@ -591,6 +599,7 @@
 				DAFBECDD1CD0E43B000EBF62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DAFBECDE1CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +608,7 @@
 				DAFBECE01CD0E43B000EBF62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DAFBECE11CD0E43B000EBF62 /* Build configuration list for PBXNativeTarget "BlenderSequenceRenderToolUITests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +617,7 @@
 				DAFBECE31CD0E43B000EBF62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

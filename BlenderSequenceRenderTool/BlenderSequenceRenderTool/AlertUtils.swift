@@ -17,8 +17,7 @@ class AlertUtils {
             dispatch_async(dispatch_get_main_queue()) {
                 () -> Void in
                 let v = controller as! ViewController
-                v.message.stringValue = message
-                //                self.displayAlert(controller, title: "Login", message: message)
+                v.addMsg(message)
             }
         }
     }

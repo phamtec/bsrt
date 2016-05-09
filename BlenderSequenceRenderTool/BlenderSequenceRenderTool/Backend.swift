@@ -24,5 +24,7 @@ protocol Backend {
     func deleteJSONData(rest: String, query: String, errorHandler: (String) -> Void, callback: (NSDictionary) -> Void ) -> Void
     func getJSONData(rest: String, query: String, errorHandler: (String) -> Void, callback: ([NSDictionary]) -> Void ) -> Void
     func getJSONObject(rest: String, query: String, errorHandler: (String) -> Void, callback: (NSDictionary) -> Void ) -> Void
+    func uploadMedia(rest: String, query: String, name: String, mime: String, data: NSData, errorHandler: (String) -> Void, callback: (NSDictionary) -> Void) -> Void
+    func downloadMedia(rest: String, query: String, filename: String, errorHandler: (String) -> Void, callback: () -> Void ) -> Void
     
 }
