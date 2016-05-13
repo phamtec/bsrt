@@ -172,7 +172,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             return
         }
         
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         BE.get().getSocket().on("progress") { data, ack in
             
@@ -201,10 +203,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
                 self.stopTracking()
             }
             else if (name == "uploadFrames") {
-                scene.doUploadFrames()
+                scene.deleteEmptyFrameFiles()
+                scene.doZipFrames() { filename in
+                    project.uploadFramesArchive(filename)
+                }
             }
             else if (name == "downloadScene") {
-                scene.doDownloadScene()
+                self.doDownloadScene(scene, project: project)
             }
         }
         
@@ -219,6 +224,15 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
     }
     
+    private func doDownloadScene(scene: SceneFolder, project: RemoteProject) {
+        scene.deleteAllFrameFiles()
+        project.doFindScene() { id in
+            project.downloadMedia(id, filename: scene.getParentFile("scene.tgz")) {
+                scene.unzip(scene.getParentPath(), file: "scene.tgz")
+            }
+        }
+    }
+    
     private func stopListening() {
         if (self.source != nil) {
             dispatch_source_cancel(self.source!)
@@ -228,14 +242,16 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     private func startTracking() {
         
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         commitFields()
-        deleteServerFrames() {
+        project.deleteServerFrames() {
             
             self.files = scene.collectAllFrameFiles()
             if (self.files.count > 0) {
-                scene.uploadFrames(self.files) {
+                project.uploadFrames(self.files) {
                     self.watchFolder()
                 }
             }
@@ -248,10 +264,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     @IBAction func start(sender: AnyObject) {
         
-        if (self.masterButton.enabled == false) {
-            sendCommand("start")
-        }
-        
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+
         self.stopButton.enabled = true
         self.startButton.enabled = false
         self.enableBox(self.settingsBox, flag: false)
@@ -259,12 +274,20 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         self.enableBox(self.slaveBox, flag: false)
         self.enableBox(self.toolsBox, flag: false)
         
-        startTracking()
-        
-        if (self.standaloneButton.enabled == false) {
-            startListening()
+        if (self.masterButton.enabled == false) {
+            sendCommand("start")
+            project.deleteAllServerFrames() {
+                self.startTracking()
+            }
         }
-        
+        else {
+            startTracking()
+            
+            if (self.standaloneButton.enabled == false) {
+                startListening()
+            }
+        }
+
     }
     
     private func stopTracking() {
@@ -306,14 +329,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     }
     
     @IBAction func deleteEmptyFrames(sender: AnyObject) {
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         scene.deleteEmptyFrameFiles()
     }
     
     @IBAction func deleteAllFrames(sender: AnyObject) {
 
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         confirm("Are you sure?", description: "All the frames will be permanently deleted.") {
             scene.deleteAllFrameFiles()
@@ -323,11 +346,19 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     @IBAction func uploadScene(sender: AnyObject) {
 
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         confirm("Are you sure?", description: "All local frames and blender backups will be deleted before the scene file is zipped and uploaded.") {
             
-            scene.doUploadScene()
+            scene.deleteAllFrameFiles()
+            scene.deleteBlenderBackupsAndZips()
+            self.addMsg("all frame files, blender backups and zips deleted")
+            
+            scene.doZipScene() { filename in
+                project.uploadSceneArchive(filename)
+            }
             
         }
 
@@ -335,46 +366,50 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
     
     @IBAction func downloadScene(sender: AnyObject) {
 
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         if (self.masterButton.enabled == false) {
             sendCommand("downloadScene")
         }
         else {
             confirm("Are you sure?", description: "All the local frames will be permanently deleted.") {
-                scene.doDownloadScene()
+               self.doDownloadScene(scene, project: project)
             }
         }
     }
     
     @IBAction func uploadFrames(sender: AnyObject) {
 
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         if (self.masterButton.enabled == false) {
             sendCommand("uploadFrames")
         }
         else {
-            scene.doUploadFrames()
+            scene.deleteEmptyFrameFiles()
+            scene.doZipFrames() { filename in
+                project.uploadFramesArchive(filename)
+            }
         }
     }
     
     @IBAction func downloadAllFrames(sender: AnyObject) {
         
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         scene.deleteEmptyFrameFiles()
-        
-        let project = self.getProjectId(self.projectField.titleOfSelectedItem!)!
-        BE.get().getJSONData("projects/\(project)/media", query: "", errorHandler: AlertUtils.defaultErrorHandler(self)) { (media: [NSDictionary]) -> Void in
-            for m in media {
-                let name = m["name"] as! String
-                if (name.rangeOfString(".* Frames", options: .RegularExpressionSearch) != nil) {
-                    let id = m["_id"] as! String
-                    scene.downloadAndUnzip(id, folder: self.folderField.stringValue, file: "frames.tgz")
-                }
+        project.forAllFrames() { id in
+            project.downloadMedia(id, filename: scene.getPath("frames.tgz")) {
+                scene.unzip(scene.parent, file: "frames.tgz")
             }
         }
+        
     }
     
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -459,20 +494,11 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
         
     }
         
-    private func deleteServerFrames(callback: () -> Void) {
-        
-        let project = self.getProjectId(self.projectField.titleOfSelectedItem!)
-        BE.get().deleteJSONData("progress", query: "?project=\(project!)&host=\(self.hostField.stringValue)", errorHandler: AlertUtils.defaultErrorHandler(self)) { (d) -> Void in
-            
-            callback()
-            
-        }
-        
-    }
-    
     private func watchFolder() {
         
-        let scene:SceneFolder = SceneFolder(messages: self, project: self.getProjectId(self.projectField.titleOfSelectedItem!)!, parent: self.folderField.stringValue, host: self.hostField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let p = self.getProjectId(self.projectField.titleOfSelectedItem!)!
+        let scene:SceneFolder = SceneFolder(messages: self, parent: self.folderField.stringValue, ext: self.extensionField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
+        let project:RemoteProject = RemoteProject(messages: self, project: p, host: self.hostField.stringValue, errorHandler: AlertUtils.defaultErrorHandler(self))
         
         let folder = open(scene.getFramesPath(), O_RDONLY)
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -483,7 +509,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             let diff = newfiles.subtract(self.files)
             if (diff.count > 0) {
                 
-                scene.uploadFrames(diff) {
+                project.uploadFrames(diff) {
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         () -> Void in

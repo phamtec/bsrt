@@ -10,43 +10,19 @@ import Foundation
 
 class SceneFolder {
     
-    var project: String
     var parent: String
-    var host: String
     var ext: String
     var messages: Messages
     var errorHandler: (String) -> Void
     
-    init(messages: Messages, project: String, parent: String, host: String, ext: String, errorHandler: (String) -> Void) {
+    init(messages: Messages, parent: String, ext: String, errorHandler: (String) -> Void) {
         self.messages = messages
         self.parent = parent
-        self.host = host
         self.ext = ext
-        self.project = project
         self.errorHandler = errorHandler
     }
-    
-    func doDownloadScene() {
-        deleteAllFrameFiles()
-        self.messages.add("all frame files deleted")
-        BE.get().getJSONData("projects/\(project)/media", query: "", errorHandler: errorHandler) { (media: [NSDictionary]) -> Void in
-            for m in media {
-                let name = m["name"] as! String
-                if (name == "Scene") {
-                    let id = m["_id"] as! String
-                    let dir:NSString = self.parent
-                    let parent = dir.stringByDeletingLastPathComponent
-                    self.downloadAndUnzip(id, folder: parent, file: "scene.tgz")
-                }
-            }
-        }
-    }
 
-    func doUploadScene() {
-        
-        self.deleteAllFrameFiles()
-        self.deleteBlenderBackupsAndZips()
-        self.messages.add("all frame files, blender backups and zips deleted")
+    func doZipScene(callback: (String) -> Void) {
         
         let dir:NSString = self.parent
         let parent = dir.stringByDeletingLastPathComponent
@@ -57,10 +33,7 @@ class SceneFolder {
         }
         else {
             self.messages.add("zipped.")
-            let data = NSData(contentsOfFile: "\(parent)/\(sceneDir)")
-            BE.get().uploadMedia("projects/\(project)/media", query: "", name: "Scene", mime: "application/x-tgz", data: data!, errorHandler: errorHandler) { Void in
-                self.messages.add("uploaded.")
-            }
+            callback("\(parent)/\(sceneDir)")
         }
 
     }
@@ -74,36 +47,44 @@ class SceneFolder {
                 self.deleteFrameFile(path.stringByDeletingPathExtension)
             }
         }
+        self.messages.add("all frame files deleted")
     }
     
-    func doUploadFrames() {
-        deleteEmptyFrameFiles()
+    func doZipFrames(callback: (String) -> Void) {
         
-        let framedir = "\(self.host)-frames.tgz"
-        let result = shell("/usr/bin/tar", arguments: ["czf", framedir, "frames"], cwd: parent)
+        let framefile = "frames.tgz"
+        let result = shell("/usr/bin/tar", arguments: ["czf", framefile, "frames"], cwd: parent)
         if (result.characters.count > 0) {
             self.messages.add(result)
         }
         else {
             self.messages.add("zipped.")
-            let data = NSData(contentsOfFile: "\(parent)/\(framedir)")
-            BE.get().uploadMedia("projects/\(project)/media", query: "", name: "\(self.host) Frames", mime: "application/x-tgz", data: data!, errorHandler: self.errorHandler) { Void in
-                self.messages.add("uploaded.")
-            }
+            callback("\(parent)/\(framefile)")
         }
     }
     
-    func downloadAndUnzip(id: String, folder: String, file: String) {
+    func getParentPath() -> String {
+        let dir:NSString = self.parent
+        return dir.stringByDeletingLastPathComponent
+    }
+    
+    func getParentFile(file: String) -> String {
+        let parent = getParentPath()
+        return "\(parent)/\(file)"
+    }
+    
+    func getPath(file: String) -> String {
+        return "\(self.parent)/\(file)"
+    }
+    
+    func unzip(parent: String, file: String) {
         
-        BE.get().downloadMedia("media/\(id)/content", query: "", filename: "\(folder)/\(file)", errorHandler: self.errorHandler) { Void in
-            self.messages.add("downloaded.")
-            let result = self.shell("/usr/bin/tar", arguments: ["xzf", file], cwd: folder)
-            if (result.characters.count > 0) {
-                self.messages.add(result)
-            }
-            else {
-                self.messages.add("unzipped.")
-            }
+        let result = self.shell("/usr/bin/tar", arguments: ["xzf", file], cwd: parent)
+        if (result.characters.count > 0) {
+            self.messages.add(result)
+        }
+        else {
+            self.messages.add("unzipped.")
         }
         
     }
@@ -169,29 +150,7 @@ class SceneFolder {
         }
     }
     
-    func uploadFrames(frames: Set<String>, callback: () -> Void) {
-        
-        var post: Dictionary<String, String> = Dictionary<String, String>()
-        post["project"] = self.project
-        post["host"] = self.host
-        var s = ""
-        for f in frames {
-            if (!s.isEmpty) {
-                s += ", "
-            }
-            s += f
-        }
-        post["frames"] = s
-        
-        BE.get().postJSONData("progress", query: "", data: post, errorHandler: self.errorHandler) { (d) -> Void in
-            
-            callback()
-            
-        }
-        
-    }
-    
-    private func deleteBlenderBackupsAndZips() {
+    func deleteBlenderBackupsAndZips() {
         
         let fileManager = NSFileManager.defaultManager()
         let enumerator = fileManager.enumeratorAtPath(self.parent)!
@@ -209,7 +168,7 @@ class SceneFolder {
     }
     
     
-    private func shell(launchPath: String, arguments: [String], cwd: String) -> String
+    func shell(launchPath: String, arguments: [String], cwd: String) -> String
     {
         let task = NSTask()
         task.launchPath = launchPath

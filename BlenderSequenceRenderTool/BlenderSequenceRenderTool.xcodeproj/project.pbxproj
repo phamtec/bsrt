@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA5854521CE060BD00CD12E3 /* SceneFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5854511CE060BD00CD12E3 /* SceneFolder.swift */; };
 		DA5854541CE0621B00CD12E3 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5854531CE0621B00CD12E3 /* Messages.swift */; };
+		DA85378E1CE0B0C2007A9587 /* RemoteProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA85378D1CE0B0C2007A9587 /* RemoteProject.swift */; };
 		DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */; };
 		DAFBECBC1CD0E43B000EBF62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */; };
 		DAFBECBE1CD0E43B000EBF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFBECBD1CD0E43B000EBF62 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		DA5854511CE060BD00CD12E3 /* SceneFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneFolder.swift; sourceTree = "<group>"; };
 		DA5854531CE0621B00CD12E3 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		DA85378D1CE0B0C2007A9587 /* RemoteProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteProject.swift; sourceTree = "<group>"; };
 		DAFBECB61CD0E43B000EBF62 /* BlenderSequenceRenderTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlenderSequenceRenderTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFBECB91CD0E43B000EBF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFBECBB1CD0E43B000EBF62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				DAFBECEE1CD0E9F4000EBF62 /* LocalBackend.swift */,
 				DA5854511CE060BD00CD12E3 /* SceneFolder.swift */,
 				DA5854531CE0621B00CD12E3 /* Messages.swift */,
+				DA85378D1CE0B0C2007A9587 /* RemoteProject.swift */,
 			);
 			path = BlenderSequenceRenderTool;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				DAFBED521CD1D10E000EBF62 /* SocketStringReader.swift in Sources */,
 				DAFBECBC1CD0E43B000EBF62 /* ViewController.swift in Sources */,
 				DAFBED551CD1D10E000EBF62 /* WebSocket.swift in Sources */,
+				DA85378E1CE0B0C2007A9587 /* RemoteProject.swift in Sources */,
 				DAFBECBA1CD0E43B000EBF62 /* AppDelegate.swift in Sources */,
 				DAFBED321CD0F15D000EBF62 /* Project.swift in Sources */,
 				DA5854521CE060BD00CD12E3 /* SceneFolder.swift in Sources */,
