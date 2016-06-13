@@ -98,7 +98,7 @@ class RemoteProject {
     
     func deleteServerFrames(callback: () -> Void) {
         
-        BE.get().deleteJSONData("progress", query: "?project=\(project)&host=\(host)", errorHandler: self.errorHandler) { (d) -> Void in
+        BE.get().deleteJSONData("projects/\(project)/progress", query: "?host=\(host)", errorHandler: self.errorHandler) { (d) -> Void in
             
             callback()
             
@@ -108,7 +108,7 @@ class RemoteProject {
     
     func deleteAllServerFrames(callback: () -> Void) {
         
-        BE.get().deleteJSONData("progress", query: "?project=\(project)", errorHandler: self.errorHandler) { (d) -> Void in
+        BE.get().deleteJSONData("projects/\(project)/progress", query: "", errorHandler: self.errorHandler) { (d) -> Void in
             
             callback()
             
